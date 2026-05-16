@@ -138,22 +138,34 @@ gh-workflow-gen gen
 # ✓ Generated workflow: .github/workflows/release.yml
 ```
 
-## Roadmap
+## Premium Template Pack 💎
 
-- **Premium template pack** ($9 one-time purchase) — 10+ advanced workflows:
-  - Semantic Release with changelog generation
-  - Multi-stage Docker builds (build → test → push)
-  - Terraform plan/apply
-  - AWS Lambda deploy
-  - Monorepo selective builds
-  - Automated dependency updates
-  - Security scanning (Trivy, SAST)
-  - Performance regression testing
-  - npm package publish
-  - GitHub Pages deploy
+Need advanced workflows for production deployments? The **[Premium Template Pack](./PREMIUM.md)** includes 7 production-ready templates:
+
+- **AWS Lambda Deploy** — Automated Lambda deployment with OIDC, multi-environment, smoke tests
+- **Terraform Plan/Apply** — Infrastructure changes with drift detection and approval gates
+- **Kubernetes Deploy** — Helm charts, kubectl, rolling updates, secrets management
+- **Multi-Stage Deploy** — Dev → Staging → Prod pipeline with approvals and rollback
+- **Monorepo CI** — Nx/Turborepo cache integration with affected project detection
+- **Security Scanning** — Trivy, Snyk, CodeQL, and license compliance
+- **E2E Testing** — Playwright/Cypress with parallelization and visual regression
+
+**Price:** $9 (one-time) | **[Learn more →](./PREMIUM.md)**
+
+## Roadmap
 
 - Custom template support (bring your own YAML snippets)
 - Template variables (inject repo-specific values)
+- Interactive template editor
+
+## Support This Project
+
+If this tool saved you time, consider supporting its development:
+
+- **Bitcoin:** `bc1qt0wawff05van54vuasqu9sluzymuhhpl3l2z3k`
+- **Ethereum:** `0x538AFaB14652792fA31a58F16c1d85191FAFC30E`
+
+Every contribution helps us build better tools for developers.
 
 ## License
 
