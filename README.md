@@ -1,5 +1,8 @@
 # gh-workflow-gen
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org/)
+
 **CLI tool to scaffold common GitHub Actions workflows in seconds.**
 
 Stop copying YAML from old projects. Generate production-ready GitHub Actions workflows with an interactive CLI.
