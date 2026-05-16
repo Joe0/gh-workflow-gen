@@ -53,7 +53,8 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        platforms: linux/amd64,linux/arm64
+        # Multi-platform builds are slower; limit to actual releases
+        platforms: \${{ github.event_name != 'pull_request' && 'linux/amd64,linux/arm64' || 'linux/amd64' }}
         push: \${{ github.event_name != 'pull_request' }}
         tags: \${{ steps.meta.outputs.tags }}
         labels: \${{ steps.meta.outputs.labels }}
@@ -61,4 +62,7 @@ jobs:
         cache-to: type=gha,mode=max
         provenance: true
         sbom: true
+        # Uncomment to forward build secrets (e.g., NPM_TOKEN for private deps):
+        # secrets: |
+        #   npm_token=\${{ secrets.NPM_TOKEN }}
 `;
