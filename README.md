@@ -148,20 +148,6 @@ gh-workflow-gen gen
 # ✓ Generated workflow: .github/workflows/release.yml
 ```
 
-## Premium Template Pack 💎
-
-Need advanced workflows for production deployments? The **[Premium Template Pack](./PREMIUM.md)** includes 7 production-ready templates:
-
-- **AWS Lambda Deploy** — Automated Lambda deployment with OIDC, multi-environment, smoke tests
-- **Terraform Plan/Apply** — Infrastructure changes with drift detection and approval gates
-- **Kubernetes Deploy** — Helm charts, kubectl, rolling updates, secrets management
-- **Multi-Stage Deploy** — Dev → Staging → Prod pipeline with approvals and rollback
-- **Monorepo CI** — Nx/Turborepo cache integration with affected project detection
-- **Security Scanning** — Trivy, Snyk, CodeQL, and license compliance
-- **E2E Testing** — Playwright/Cypress with parallelization and visual regression
-
-**Price:** $9 (one-time) | **[Learn more →](./PREMIUM.md)**
-
 ## Roadmap
 
 - Custom template support (bring your own YAML snippets)
