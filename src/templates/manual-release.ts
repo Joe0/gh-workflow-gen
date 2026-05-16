@@ -39,12 +39,34 @@ jobs:
           exit 1
         fi
 
+    - name: Check for uncommitted changes
+      run: |
+        if [[ -n "\$(git status --porcelain)" ]]; then
+          echo "Error: Working directory has uncommitted changes"
+          echo "Commit or stash changes before creating a release"
+          exit 1
+        fi
+
+    # Note: Update version in package.json/Cargo.toml/pyproject.toml BEFORE triggering this workflow
+    # This workflow creates the tag from the current commit, it does not modify version files
+
     - name: Create Git tag
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git tag -a "\${{ inputs.version }}" -m "Release \${{ inputs.version }}"
         git push origin "\${{ inputs.version }}"
+
+    # Optional: Generate changelog from commits
+    # - name: Generate changelog
+    #   id: changelog
+    #   run: |
+    #     PREV_TAG=\$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+    #     if [[ -n "$PREV_TAG" ]]; then
+    #       echo "changes<<EOF" >> $GITHUB_OUTPUT
+    #       git log \${PREV_TAG}..HEAD --pretty=format:"- %s (%h)" >> $GITHUB_OUTPUT
+    #       echo "EOF" >> $GITHUB_OUTPUT
+    #     fi
 
     # Optional: Build and upload artifacts
     # - name: Build release artifacts
@@ -61,6 +83,7 @@ jobs:
         draft: false
         prerelease: \${{ inputs.prerelease }}
         generate_release_notes: true
+        # body: \${{ steps.changelog.outputs.changes }}  # Use if changelog step enabled
         # Uncomment to attach artifacts:
         # files: |
         #   dist.tar.gz
