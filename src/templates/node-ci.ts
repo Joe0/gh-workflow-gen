@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+# Cancel in-progress runs on new push to same PR/branch
+concurrency:
+  group: \${{ github.workflow }}-\${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -30,8 +35,16 @@ jobs:
     - name: Run linter
       run: npm run lint --if-present
 
-    - name: Run tests
-      run: npm test
+    - name: Run tests with coverage
+      run: npm test -- --coverage --coverageReporters=text --coverageReporters=lcov
+
+    - name: Upload coverage to Codecov
+      if: matrix.node-version == '20.x'
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./coverage/lcov.info
+        flags: node-\${{ matrix.node-version }}
+        fail_ci_if_error: false
 
     - name: Build
       run: npm run build --if-present
