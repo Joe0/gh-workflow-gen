@@ -3,3 +3,10 @@ dist/
 *.log
 .DS_Store
 .env
+
+# Premium pack — sold as paid product, not public
+premium-workflows/
+gh-workflow-gen-premium-*.zip
+PREMIUM.md
+extract-premium.js
+src/templates/premium/

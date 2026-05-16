@@ -14,9 +14,19 @@ Stop copying YAML from old projects. Generate production-ready GitHub Actions wo
 
 ## Installation
 
+Install directly from the GitHub repo (no npm registry account needed):
+
 ```bash
-npm install -g gh-workflow-gen
+npm install -g github:Joe0/gh-workflow-gen
 ```
+
+Or run on-demand with npx:
+
+```bash
+npx github:Joe0/gh-workflow-gen generate
+```
+
+> The package is intended to live at `@ironbond/gh-workflow-gen` on npm. Until that publish path is unblocked, install from the source repo as shown above — it builds locally on install.
 
 ## Usage
 
@@ -162,14 +172,14 @@ Need advanced workflows for production deployments? The **[Premium Template Pack
 
 If this tool saved you time, consider supporting its development:
 
-- **Bitcoin:** `bc1qt0wawff05van54vuasqu9sluzymuhhpl3l2z3k`
-- **Ethereum:** `0x538AFaB14652792fA31a58F16c1d85191FAFC30E`
+- **Bitcoin:** `bc1q0rv04u4nv9704tzy8rzgp7pl68pduhlvpf2hs4`
+- **Ethereum:** `0xCc26a40630600ffD744E3F2BAd1B904Bb9f8Df37`
 
 Every contribution helps us build better tools for developers.
 
 ## License
 
-MIT © Ironbond LLC
+MIT © Ironbond
 
 ## Feedback
 
