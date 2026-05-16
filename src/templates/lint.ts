@@ -23,8 +23,11 @@ jobs:
       run: npm ci
 
     - name: Run ESLint
+      if: hashFiles('.eslintrc*', 'eslint.config.*') != ''
       run: npm run lint
+      continue-on-error: false
 
     - name: Run Prettier check
-      run: npx prettier --check .
+      if: hashFiles('.prettierrc*', 'prettier.config.*') != '' || hashFiles('package.json') != ''
+      run: npx prettier --check "**/*.{js,jsx,ts,tsx,json,md,yml,yaml}"
 `;
