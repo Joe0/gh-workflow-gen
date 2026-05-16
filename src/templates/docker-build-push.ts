@@ -18,6 +18,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write  # For provenance attestation
 
     steps:
     - name: Checkout repository
@@ -48,6 +49,7 @@ jobs:
           type=sha
 
     - name: Build and push Docker image
+      id: build
       uses: docker/build-push-action@v5
       with:
         context: .
@@ -57,4 +59,6 @@ jobs:
         labels: \${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
+        provenance: true
+        sbom: true
 `;
