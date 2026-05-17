@@ -11,6 +11,9 @@ concurrency:
   group: \${{ github.workflow }}-\${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -40,11 +43,11 @@ jobs:
 
     - name: Generate coverage (if using Jest/Vitest)
       if: matrix.node-version == '20.x'
-      run: npm test -- --coverage --coverageReporters=text --coverageReporters=lcov || echo "Coverage generation skipped (test runner may not support --coverage flag)"
+      run: npm test -- --coverage --coverageReporters=text --coverageReporters=lcov
       continue-on-error: true
 
     - name: Upload coverage to Codecov
-      if: matrix.node-version == '20.x' && hashFiles('coverage/lcov.info') != ''
+      if: success() && matrix.node-version == '20.x' && hashFiles('coverage/lcov.info') != ''
       uses: codecov/codecov-action@v4
       with:
         files: ./coverage/lcov.info
