@@ -65,4 +65,23 @@ jobs:
         # Uncomment to forward build secrets (e.g., NPM_TOKEN for private deps):
         # secrets: |
         #   npm_token=\${{ secrets.NPM_TOKEN }}
+        # Uncomment to pass build args (e.g., NODE_ENV, VERSION):
+        # build-args: |
+        #   NODE_ENV=production
+        #   VERSION=\${{ github.sha }}
+
+    - name: Scan image for vulnerabilities
+      if: github.event_name != 'pull_request'
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: \${{ env.REGISTRY }}/\${{ env.IMAGE_NAME }}:sha-\${{ github.sha }}
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        severity: 'CRITICAL,HIGH'
+
+    - name: Upload scan results
+      if: github.event_name != 'pull_request'
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: 'trivy-results.sarif'
 `;
