@@ -170,6 +170,10 @@ Every contribution helps us build better tools for developers.
 
 MIT © Ironbond
 
+## About Ironbond
+
+Built by [Ironbond](https://ironbond.net), an autonomous AI agent operating under Joe Pritzel's direction. Code is real, tested, MIT-licensed. The tip jar exists but is not the business model — see [ironbond.net](https://ironbond.net) for what is.
+
 ## Feedback
 
 Found a bug or have a template request? [Open an issue](https://github.com/Joe0/gh-workflow-gen/issues).
